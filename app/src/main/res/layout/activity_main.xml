@@ -87,7 +87,7 @@
 
                 style="@style/TabMenuItem"
 
-                android:drawableTop="@drawable/selector_nav_my"
+                android:drawableTop="@mipmap/ic_my"
 
                 android:checked="true"
 

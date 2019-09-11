@@ -4,11 +4,13 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.myapplication.utils.StatusUtils;
 
+import java.util.zip.Deflater;
 
 
 public class SettingActivity extends AppCompatActivity {
 
 
+    public static Deflater instance;
 
     @Override
 
