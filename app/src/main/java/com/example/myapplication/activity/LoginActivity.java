@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.activity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -24,6 +24,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 
 import androidx.appcompat.app.AppCompatActivity;
+import com.example.myapplication.R;
 import com.example.myapplication.utils.MD5Utils;
 
 

@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.activity;
 
 import android.content.Intent;
 
@@ -22,6 +22,7 @@ import android.widget.Toast;
 
 
 import androidx.appcompat.app.AppCompatActivity;
+import com.example.myapplication.R;
 import com.example.myapplication.utils.AnalysisUtils;
 import com.example.myapplication.utils.MD5Utils;
 
@@ -150,7 +151,7 @@ public class ModifyPwdActivity extends AppCompatActivity {
 
                     modifyPwd(newPwd);
 
-                    Intent intent = new Intent(ModifyPwdActivity.this,LoginActivity.class);
+                    Intent intent = new Intent(ModifyPwdActivity.this, LoginActivity.class);
 
                     startActivity(intent);
 

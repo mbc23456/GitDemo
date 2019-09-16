@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.activity;
 
 import android.content.Intent;
 
@@ -17,7 +17,7 @@ import android.widget.TextView;
 
 
 import androidx.appcompat.app.AppCompatActivity;
-
+import com.example.myapplication.R;
 
 
 import java.util.Timer;

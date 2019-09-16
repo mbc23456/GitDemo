@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.activity;
 
 import android.app.Activity;
 
@@ -27,7 +27,7 @@ import android.widget.Toast;
 
 
 import androidx.fragment.app.Fragment;
-
+import com.example.myapplication.R;
 
 
 public class MyInfoFragment extends Fragment {
