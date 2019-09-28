@@ -11,7 +11,9 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
 import android.widget.TextView;
+import androidx.fragment.app.FragmentActivity;
 import com.example.myapplication.R;
+import com.example.myapplication.entity.Exercise;
 
 
 import java.util.List;
@@ -38,6 +40,9 @@ public class ExerciseAdapter extends BaseAdapter {
 
     }
 
+    public ExerciseAdapter(FragmentActivity activity, List<com.example.myapplication.entity.Exercise> exercises) {
+
+    }
 
 
     // list的总记录数，若为0的话，即使有数据也不会显示

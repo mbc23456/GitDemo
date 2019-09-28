@@ -14,6 +14,12 @@ public class Exercise implements Serializable {
 
     private int background;  // 题目标题的背景
 
+    private String bgColor;
+
+
+
+    public void setBgColor(String bgColor){this.bgColor=bgColor;}
+
 
 
     public int getId() {
@@ -96,4 +102,7 @@ public class Exercise implements Serializable {
 
     }
 
+    public String getBgColor() {
+        return null;
+    }
 }

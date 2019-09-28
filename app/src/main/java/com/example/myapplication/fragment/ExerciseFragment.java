@@ -1,40 +1,34 @@
 package com.example.myapplication.fragment;
 
 import android.content.Context;
-
-import android.content.Intent;
-
 import android.net.Uri;
-
 import android.os.Bundle;
-
-
-
+import android.widget.AdapterView;
+import android.widget.ListView;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
-
-
 import android.view.LayoutInflater;
-
 import android.view.View;
-
 import android.view.ViewGroup;
 
-import android.widget.AdapterView;
-
-import android.widget.ListView;
 import com.example.myapplication.R;
 import com.example.myapplication.adapter.ExerciseAdapter;
+import com.example.myapplication.entity.Exercise;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+import java.util.*;
 
-import java.util.ArrayList;
-
-import java.util.List;
-
-
-
-
-
+/**
+ * A simple {@link Fragment} subclass.
+ * Activities that contain this fragment must implement the
+ * {@link ExerciseFragment.OnFragmentInteractionListener} interface
+ * to handle interaction events.
+ * Use the {@link ExerciseFragment#newInstance} factory method to
+ * create an instance of this fragment.
+ */
 public class ExerciseFragment extends Fragment {
 
     private static final String ARG_PARAM = "param";
@@ -46,7 +40,7 @@ public class ExerciseFragment extends Fragment {
 
 
     private ListView lvExecise;
-
+    private Object JSON;
 
 
     public ExerciseFragment() {
@@ -135,21 +129,19 @@ public class ExerciseFragment extends Fragment {
 
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                ExerciseAdapter.Exercise exercise = (ExerciseAdapter.Exercise) parent.getItemAtPosition(position);
+                Exercise exercise = (Exercise) parent.getItemAtPosition(position);
 
-                Intent intent = new Intent(ExerciseFragment.this.getContext(), UserInfoActivity.class);
+//                Intent intent = new Intent(ExerciseFragment.this.getContext(), ExerciseDetailActivity.class);
 
-                intent.putExtra("id", exercise.getId());
+//                intent.putExtra("id", exercise.getId());
 
-                intent.putExtra("title", exercise.getTitle());
+//                intent.putExtra("title", exercise.getTitle());
 
-                ExerciseFragment.this.startActivity(intent);
+//                ExerciseFragment.this.startActivity(intent);
 
             }
 
         });
-
-
 
         return view;
 
@@ -159,7 +151,165 @@ public class ExerciseFragment extends Fragment {
 
     private void initData() {
 
-        exercises = new ArrayList<>();
+        exercises = new ArrayList<ExerciseAdapter.Exercise>();
+
+
+
+        try {
+
+            // 1. 从assets目录中获取资源的输入流
+
+            InputStream input = getResources().getAssets().open("exercise_title.json");
+
+            // 2. 将inputstream转为String
+
+            String json = IOUtils.convert(input, StandardCharsets.UTF_8);
+
+            // 3. 利用fastjson将字符串转为对象集合
+
+            exercises = JSON.parseArray(json, Exercise.class);
+
+        } catch (IOException e) {
+
+            e.printStackTrace();
+
+        }
+
+    }
+
+
+
+    private void generateData() {
+
+        exercises = new List<ExerciseAdapter.Exercise>() {
+            @Override
+            public int size() {
+                return 0;
+            }
+
+            @Override
+            public boolean isEmpty() {
+                return false;
+            }
+
+            @Override
+            public boolean contains(@Nullable Object o) {
+                return false;
+            }
+
+            @NonNull
+            @Override
+            public Iterator<ExerciseAdapter.Exercise> iterator() {
+                return null;
+            }
+
+            @NonNull
+            @Override
+            public Object[] toArray() {
+                return new Object[0];
+            }
+
+            @NonNull
+            @Override
+            public <T> T[] toArray(@NonNull T[] ts) {
+                return null;
+            }
+
+            @Override
+            public boolean add(ExerciseAdapter.Exercise exercise) {
+                return false;
+            }
+
+            @Override
+            public boolean remove(@Nullable Object o) {
+                return false;
+            }
+
+            @Override
+            public boolean containsAll(@NonNull Collection<?> collection) {
+                return false;
+            }
+
+            @Override
+            public boolean addAll(@NonNull Collection<? extends ExerciseAdapter.Exercise> collection) {
+                return false;
+            }
+
+            @Override
+            public boolean addAll(int i, Collection<? extends ExerciseAdapter.Exercise> collection) {
+                return false;
+            }
+
+            @Override
+            public boolean removeAll(@NonNull Collection<?> collection) {
+                return false;
+            }
+
+            @Override
+            public boolean retainAll(@NonNull Collection<?> collection) {
+                return false;
+            }
+
+            @Override
+            public void clear() {
+
+            }
+
+            @Override
+            public boolean equals(@Nullable Object o) {
+                return false;
+            }
+
+            @Override
+            public int hashCode() {
+                return 0;
+            }
+
+            @Override
+            public ExerciseAdapter.Exercise get(int i) {
+                return null;
+            }
+
+            @Override
+            public ExerciseAdapter.Exercise set(int i, ExerciseAdapter.Exercise exercise) {
+                return null;
+            }
+
+            @Override
+            public void add(int i, ExerciseAdapter.Exercise exercise) {
+
+            }
+
+            @Override
+            public ExerciseAdapter.Exercise remove(int i) {
+                return null;
+            }
+
+            @Override
+            public int indexOf(Object o) {
+                return 0;
+            }
+
+            @Override
+            public int lastIndexOf(Object o) {
+                return 0;
+            }
+
+            @Override
+            public ListIterator<ExerciseAdapter.Exercise> listIterator() {
+                return null;
+            }
+
+            @Override
+            public ListIterator<ExerciseAdapter.Exercise> listIterator(int i) {
+                return null;
+            }
+
+            @Override
+            public List<ExerciseAdapter.Exercise> subList(int i, int i1) {
+                return null;
+            }
+        };
 
         for(int i = 0; i < 15; i++) {
 
@@ -194,7 +344,6 @@ public class ExerciseFragment extends Fragment {
                     exercise.setTitle("第3章 Android UI开发");
 
                     exercise.setSubTitle("共计5题");
-
 
 
                     break;
@@ -256,6 +405,7 @@ public class ExerciseFragment extends Fragment {
                     exercise.setSubTitle("共计5题");
 
 
+
                     break;
 
                 case 9:
@@ -285,7 +435,6 @@ public class ExerciseFragment extends Fragment {
                     exercise.setSubTitle("共计5题");
 
 
-
                     break;
 
                 case 12:
@@ -305,7 +454,6 @@ public class ExerciseFragment extends Fragment {
                     exercise.setSubTitle("共计5题");
 
 
-
                     break;
 
                 case 14:
@@ -313,6 +461,7 @@ public class ExerciseFragment extends Fragment {
                     exercise.setTitle("第15章 项目发布上线");
 
                     exercise.setSubTitle("共计5题");
+
 
 
                     break;
@@ -408,3 +557,4 @@ public class ExerciseFragment extends Fragment {
     }
 
 }
+
